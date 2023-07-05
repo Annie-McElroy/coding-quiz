@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Technical Assessment Quiz</title>
 </head>
 <body>
     <!-- Beginning header for the quiz -->
+    <header>
+        <h1 class="title"></h1>
+        <!-- introduction paragraph for quiz -->
+        <p class="rules"></p>
+        <button class="start">Start Quiz</button>
+    </header>
+    <!-- Disappears and is replaced with quiz questions -->
     <!-- Several question headers -->
     <!-- Multiple choice answers = button boxes with hover capability-->
-    <!-- Display whether the question is right (disappears after a few seconds)-->
+    <section class="quizBox">
+        <h2 class="question"></h2>
+        <ol class="choiceList">
+        </ol>
+        <!-- TODO:Display whether the question is right (disappears after a few seconds)-->
+    </section>
+
+    <!-- timer in top -->
     <!-- Final score with initials box -->
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>

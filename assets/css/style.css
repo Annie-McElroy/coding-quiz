@@ -1,1 +1,23 @@
 /* button coloring and hover capabilities */
+
+header {
+    text-align: center;
+}
+
+.rules {
+    font-size: 1.8rem;
+}
+
+.start {
+    background-color: #810deed3;
+    border: none;
+    color: #ccf1daa2;
+    padding: 15px 45px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.8rem;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 25%;
+}
