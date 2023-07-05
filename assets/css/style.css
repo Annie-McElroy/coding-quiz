@@ -1,7 +1,17 @@
 /* button coloring and hover capabilities */
 
 header {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.highscore {
+    font-size: 200%;
+}
+
+.timer {
+    font-size: 200%;
 }
 
 .title {
