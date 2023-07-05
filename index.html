@@ -12,7 +12,7 @@
         <section>
             <div><a href="" class="highscore">View Highscores</a></div>
             <!-- timer in top -->
-            <div class="timer">Timer</div>
+            <div class="timer">Timer<span class="seconds">60 seconds</span></div>
         </section>
     </header>
     <section class="firstRem">
@@ -26,9 +26,17 @@
     <!-- Multiple choice answers = button boxes with hover capability-->
     <section class="quizBox">
         <h2 class="question"></h2>
-        <ol class="choiceList">
-        </ol>
+        <ul class="choiceList">
+        </ul>
+        <div class="quesResult"></div>
         <!-- TODO: Display whether the question is right (disappears after a few seconds)-->
+    </section>
+    <section class="quizEnd">
+        <h2 class="quizEndHead"></h2>
+        <p class="scoreResult"></p>
+        <label for="initials">Initials Here:</label>
+        <input type="text" id="initials" name="initials">
+        <input type="submit" value="submit">
     </section>
 
     <!-- Final score with initials box -->
