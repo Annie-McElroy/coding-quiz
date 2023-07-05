@@ -1,11 +1,20 @@
 /* button coloring and hover capabilities */
 
 header {
+    display: inline-block;
+}
+
+.title {
+    font-size: 2.5rem;
+}
+
+.firstRem {
     text-align: center;
 }
 
 .rules {
     font-size: 1.8rem;
+    margin: 10%;
 }
 
 .start {
