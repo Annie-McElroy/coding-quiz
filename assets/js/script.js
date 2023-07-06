@@ -1,7 +1,10 @@
 var bigTitle = document.querySelector(".title");
 var rules = document.querySelector(".rules");
-var startButton = document.querySelector(".start")
+var startButton = document.querySelector(".start");
+var timerCount = document.querySelector(".timer");
 
+var winCounter = 0;
+var lossCounter = 0;
 var question = 0;
 var choices = 0;
 var correctAnswers = 0;
@@ -27,17 +30,21 @@ var questions =[
         correctAnswer: ""===" means true in value and type, while "==" means true in value only"
     },
     {
-        question: "Which of the below are data types present in Javascript?",
-        answers: ["String", "Boolean", "Number", "All of the above"],
-        correctAnswer: "All of the above"
+        question: "Which of the following methods will combine arrays together and make a new array?",
+        answers: ["pop()", "shift()", "concat()", "join()"],
+        correctAnswer: "concat()"
     }
-]
+];
 // Timer for the whole quiz
 // SetInterval and Clear Interval for the timer
 // Eventlistener for question/answer transition
 
 // Start quiz function
-function startQuiz() {
+startQuiz.addEventListener("click", function() {
+    isWin = false;
+    timerCount = 60;
+
+
 
 }
 // If else statements for eventlistener

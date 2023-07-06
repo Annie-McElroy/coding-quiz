@@ -1,5 +1,14 @@
 /* button coloring and hover capabilities */
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #adc7f8d3;
+    font-family: "Arial" sans-serif;
+}
+
 header {
     display: flex;
     flex-wrap: wrap;
@@ -39,4 +48,9 @@ header {
     margin: 5px 2px;
     cursor: pointer;
     border-radius: 25%;
+}
+
+.quizEnd {
+    display: flex;
+    justify-content: center;
 }
