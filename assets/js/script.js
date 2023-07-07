@@ -13,7 +13,7 @@ var resultBox = document.querySelector(".quiz-end")
 
 var winCounter = 0;
 var lossCounter = 0;
-// var userScore = 0;
+var userScore = 0;
 var questionNum = 0;
 // var choices = 0;
 var correctAnswer = 0;
@@ -68,17 +68,17 @@ var questions =[
     {
         q: "Which of the below are data types present in Javascript?",
         answers: ["String", "Boolean", "Number", "All of the above"],
-        correctAnswer: "All of the above"
+        correctA: "All of the above"
     },
     {
         q: "What is the difference between "==" and "==="?",
         answers: [""==" means true in value and type, while "===" means true in value only", ""===" means true in value and type, while "==" means true in value only", "Both mean the same exact thing", "They mean completely opposite of being true in any sense"],
-        correctAnswer: ""===" means true in value and type, while "==" means true in value only"
+        correctA: ""===" means true in value and type, while "==" means true in value only"
     },
     {
         q: "Which of the following methods will combine arrays together and make a new array?",
         answers: ["pop()", "shift()", "concat()", "join()"],
-        correctAnswer: "concat()"
+        correctA: "concat()"
     }
 ];
 
@@ -109,6 +109,20 @@ function nextQuestion() {
         loadQues();
     } else {
         quizBox.remove()
+    }
+};
+
+function selectedAnswer(answers) {
+    var userSel = answers.textContent;
+    var correctAnswer = questions[currentQuestion].correctA
+    if (userSel == correctAnswer) {
+        userScore += 1;
+        // display correct below question area
+        nextQuestion();
+    } else {
+        // display wrong below question area
+        // dock 5-10 seconds from the timer
+        nextQuestion();
     }
 };
 
