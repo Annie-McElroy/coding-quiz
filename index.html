@@ -8,15 +8,13 @@
 </head>
 <body>
     <!-- Beginning header for the quiz -->
-    <header
-        <section>
-            <div><a href="" class="highscore">View Highscores</a></div>
-            <!-- timer in top -->
-            <div class="timer">Timer<span class="seconds">60 seconds</span></div>
-        </section>
+    <header>
+        <h2 class="highscore"><a href="highscore.html">View Highscores</a></h2>
+        <!-- timer in top -->
+        <h2 class="timer"><span class="time-text"></span></h2>
     </header>
     <main class="box">
-        <section class="firstRem">
+        <section class="first-box">
             <h1 class="title"></h1>
             <!-- introduction paragraph for quiz -->
             <p class="rules"></p>
@@ -25,14 +23,14 @@
         <!-- Disappears and is replaced with quiz questions -->
         <!-- Placeholder for question and multiple choice answers -->
         <!-- Multiple choice answers = button boxes with hover capability-->
-        <section class="quizBox">
+        <section class="quiz-box">
             <h2 class="question"></h2>
             <ul class="choiceList">
             </ul>
             <div class="quesResult"></div>
             <!-- Display whether the question is right (disappears after a few seconds)-->
         </section>
-        <section class="quizEnd">
+        <section class="quiz-end">
             <h2 class="quizEndHead"></h2>
             <p class="scoreResult"></p>
             <label for="initials">Initials Here:</label>

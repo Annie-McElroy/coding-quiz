@@ -12,23 +12,43 @@ body {
 header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.highscore {
-    font-size: 200%;
-}
-
+.highscore,
 .timer {
-    font-size: 200%;
+    margin-top: 2px;
 }
+
+/* .timer {
+    font-size: 200%;
+} */
 
 .title {
     font-size: 2.5rem;
 }
 
-.firstRem {
+main {
+    box-sizing: border-box;
+    margin: 25px 25% 0px 25%;
+}
+.first-box,
+.quiz-box {
     text-align: center;
+}
+
+.quiz-box {
+    /* display: flex; */
+}
+
+.choiceList {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 12%;
+}
+
+.choiceButton {
+    font-size: 18px;
 }
 
 .rules {
@@ -50,7 +70,7 @@ header {
     border-radius: 25%;
 }
 
-.quizEnd {
+.quiz-end {
     display: flex;
     justify-content: center;
 }
