@@ -20,10 +20,6 @@ header {
     margin-top: 2px;
 }
 
-/* .timer {
-    font-size: 200%;
-} */
-
 .title {
     font-size: 2.5rem;
 }
@@ -35,10 +31,6 @@ main {
 .first-box,
 .quiz-box {
     text-align: center;
-}
-
-.quiz-box {
-    /* display: flex; */
 }
 
 .question {
@@ -84,11 +76,6 @@ main {
     border-radius: 25%;
 }
 
-/* .quiz-end {
-    display: flex;
-    justify-content: center;
-} */
-
 .end-button {
     background-color:#810deed3;
     border: none;
@@ -101,4 +88,12 @@ main {
     margin: 5px 2px;
     cursor: pointer;
     border-radius: 25%;
+}
+
+.highscore-list {
+    text-align: center;
+}
+
+.score-list {
+    list-style-type: none;
 }

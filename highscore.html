@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Highscores</title>
 </head>
 <body>
     <header>
         <h2><a href="index.html" class="home">Homepage</a></h2>
-            <!-- timer in top -->
-        <h2 class="timer"><span class="time-text"></span></h2>
     </header>
-    <main>
-        <h1 class="head"></h1>
+    <main class="highscore-list">
+        <h1 class="head">High Scores List</h1>
         <ul class="score-list"></ul>
-        <button class="replay"></button>
-        <button class="clear"></button>
+        <!-- <button class="end-button" id="replay">Restart Quiz</button> -->
+        <button class="end-button" id="clear">Clear All</button>
     </main>
+    <script src="./assets/js/localscores.js"></script>
 </body>
 </html>

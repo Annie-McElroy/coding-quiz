@@ -163,10 +163,11 @@ function displayMessage(type, message) {
 }
 
 function init() {
-    var storedScores = JSON.parse(localStorage.getItem("High Scores"));
+    var storedScores = JSON.parse(localStorage.getItem("Highscores"));
     
     if (storedScores != null) {
         allScores = storedScores;
+        console.log(allScores)
     }
 };
 
@@ -188,7 +189,7 @@ submitButton.addEventListener('click', function(event) {
         displayMessage("sucess", "Highscore saved to 'View Highscore'")
 
         allScores.push(scoreInfo)
-        localStorage.setItem("High Scores", JSON.stringify(allScores));
+        localStorage.setItem("Highscores", JSON.stringify(allScores));
         window.location.href = "highscore.html";
         // localStorage.setItem("Initials", userName)
         // localStorage.setItem("score", userScore)
@@ -197,22 +198,9 @@ submitButton.addEventListener('click', function(event) {
 });
 
 
-
-// function resetQuiz() {
-//     timerCount = 75;
-
-// }
-
 redoQuiz.addEventListener('click', function() {
     window.location.reload();
-    // timerCount = 76;
-    // scoreBox.setAttribute('style', 'display: none');
-    // infoBox.setAttribute('style', 'display: block');
 })
-
-// function addScore {
-//     var
-// }
 
 // Subtract time if question is wrong
 // Game over when all questions are reached or time = 0
