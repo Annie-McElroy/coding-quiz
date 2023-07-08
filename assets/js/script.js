@@ -140,21 +140,16 @@ function endQuiz() {
 
     scoreBox.setAttribute('style', 'display: block');
 }
-// var userSel = choiceButton.value;
-
-// userSel.addEventListener('click', function(){
-//     nextQuestion()
-// })
 
 
 
 function selectedAnswer(event) {
     if (event.target.textContent == questions[currentQuestion].correctA) {
-    checkAnswer.innterHTML = "Correct";
+    checkAnswer.innerHTML = "Correct";
     nextQuestion();
     } else {
-    checkAnswer.innterHTML = "Wrong";
-    // remove time from timer
+    checkAnswer.innerHTML = "Wrong";
+    timerCount -= 10;
     nextQuestion();
     }
     // var userSel = answers.textContent;
