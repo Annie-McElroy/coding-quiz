@@ -2,23 +2,22 @@ var infoBox = document.querySelector(".first-box");
 var bigTitle = document.querySelector(".title");
 var rules = document.querySelector(".rules");
 var startQuiz = document.querySelector(".start");
+var checkAnswer = document.querySelector(".quesResult")
 
 var quizBox = document.querySelector(".quiz-box")
 
-var timerCount = document.querySelector(".timer");
-var timeText = document.querySelector(".time-text")
+var timerCount = 75;
+var timeText = document.querySelector(".timer")
+var timerStart;
 
 
 var resultBox = document.querySelector(".quiz-end")
 
-var winCounter = 0;
-var lossCounter = 0;
-var userScore = 0;
+// var userScore = 0;
 var questionNum = 0;
-// var choices = 0;
 var correctAnswer = 0;
 var endQuiz = false;
-var selectedAnswer = [];
+var selectedAnswer;
 
 // var question = document.querySelector(".question");
 // var choices = document.querySelector(".choiceList")
@@ -32,17 +31,24 @@ rules.textContent = "To complete this quiz please answer the following 5 questio
 // SetInterval and Clear Interval for the timer
 // Eventlistener for question/answer transition
 
+function setTime() {
+    timerCount--;
+    timeText.textContent = "Time: " + timerCount;
+    // if (secondsLeft <=0) {
+    //     endScore();
+    // }
+};
 
 
 // Start quiz function
 
 startQuiz.addEventListener("click", function() {
     // event.stopPropagation();
-    // isWin = false;
-    // timerCount = 60;
-    
+    timerStart = setInterval(setTime, 1000);
     infoBox.setAttribute('style', 'display: none');
+    setTime();
     loadQues();
+    
     
     // if(que_count < questions.length - 1){ //if question count is less than total question length
     //     que_count++; //increment the que_count value
@@ -55,12 +61,7 @@ startQuiz.addEventListener("click", function() {
     //     startTimerLine(widthValue); //calling startTimerLine function
     //     timeText.textContent = "Time Left"; //change the timeText to Time Left
     //     next_btn.classList.remove("show"); //hide the next button
-    
-    // Add list element and bind to choices list
-    
-    
-    
-    // Create vars for all question headers and list answers
+
     
 });
 
@@ -71,13 +72,18 @@ var questions =[
         correctA: "All of the above"
     },
     {
-        q: "What is the difference between "==" and "==="?",
-        answers: [""==" means true in value and type, while "===" means true in value only", ""===" means true in value and type, while "==" means true in value only", "Both mean the same exact thing", "They mean completely opposite of being true in any sense"],
-        correctA: ""===" means true in value and type, while "==" means true in value only"
+        q: "Which of the following methods is used to access HTML elements using Javascript?",
+        answers: ["getElementbyID()", "getElementbyClassName()", "Both of the above", "None of the above"],
+        correctA: "Both of the above"
     },
     {
         q: "Which of the following methods will combine arrays together and make a new array?",
         answers: ["pop()", "shift()", "concat()", "join()"],
+        correctA: "concat()"
+    },
+    {
+        q: "What does 'document.createElement('h2')' do in the HTML?",
+        answers: ["", "shift()", "concat()", "join()"],
         correctA: "concat()"
     }
 ];
@@ -98,6 +104,9 @@ for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
 
     choiceButton.textContent = questions[currentQuestion].answers[i];
     
+    choiceButton.addEventListener('click', function(event) {
+        selectedAnswer(event)
+    });
     
     choiceList.appendChild(choiceItem);
     choiceItem.appendChild(choiceButton);
@@ -112,23 +121,36 @@ function nextQuestion() {
     }
 };
 
-function selectedAnswer(answers) {
-    var userSel = answers.textContent;
-    var correctAnswer = questions[currentQuestion].correctA
-    if (userSel == correctAnswer) {
-        userScore += 1;
-        // display correct below question area
-        nextQuestion();
+// var userSel = choiceButton.value;
+
+// userSel.addEventListener('click', function(){
+//     nextQuestion()
+// })
+
+
+
+function selectedAnswer(event) {
+    if (event.target.textContent == questions[currentQuestion].correctA) {
+    checkAnswer.innterHTML = "Correct";
+    nextQuestion();
     } else {
-        // display wrong below question area
-        // dock 5-10 seconds from the timer
-        nextQuestion();
+    checkAnswer.innterHTML = "Wrong";
+    // remove time from timer
+    nextQuestion();
     }
+    // var userSel = answers.textContent;
+    // var correctAnswer = questions[currentQuestion].correctA
+    // if (userSel == correctAnswer) {
+    //     userScore += 1;
+    //     // display correct below question area
+    //     nextQuestion();
+    // } else {
+    //     // display wrong below question area
+    //     // dock 5-10 seconds from the timer
+    //     nextQuestion();
+    // }
 };
 
-// function loadScore() {
-//     var userScore = document.
-// }
 
 
 // Clear Interval clears the timer and ends the quiz
