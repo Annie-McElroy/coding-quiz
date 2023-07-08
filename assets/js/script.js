@@ -5,19 +5,21 @@ var startQuiz = document.querySelector(".start");
 var checkAnswer = document.querySelector(".quesResult")
 
 var quizBox = document.querySelector(".quiz-box")
+var scoreBox = document.querySelector(".quiz-end")
 
 var timerCount = 75;
 var timeText = document.querySelector(".timer")
 var timerStart;
+var userScore;
 
 
 var resultBox = document.querySelector(".quiz-end")
 
-// var userScore = 0;
-var questionNum = 0;
 var correctAnswer = 0;
 // var endQuiz = false;
 var selectedAnswer;
+
+scoreBox.setAttribute('style', 'display: none');
 
 // var question = document.querySelector(".question");
 // var choices = document.querySelector(".choiceList")
@@ -48,8 +50,7 @@ startQuiz.addEventListener("click", function() {
     infoBox.setAttribute('style', 'display: none');
     setTime();
     loadQues();
-    
-    
+        
     // if(que_count < questions.length - 1){ //if question count is less than total question length
     //     que_count++; //increment the que_count value
     //     que_numb++; //increment the que_numb value
@@ -62,7 +63,6 @@ startQuiz.addEventListener("click", function() {
     //     timeText.textContent = "Time Left"; //change the timeText to Time Left
     //     next_btn.classList.remove("show"); //hide the next button
 
-    
 });
 
 var questions =[
@@ -97,38 +97,48 @@ var questions =[
 var currentQuestion = 0;
 
 function loadQues() {
-var quizQuest = document.querySelector(".question");
-var choices = document.querySelector(".choiceList");
-quizQuest.textContent = questions[currentQuestion].q
-choices.innerHTML = "";
+    var quizQuest = document.querySelector(".question");
+    var choices = document.querySelector(".choiceList");
+    quizQuest.textContent = questions[currentQuestion].q
+    choices.innerHTML = "";
 
-for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
-    var choiceList = document.querySelector(".choiceList");
-    var choiceItem = document.createElement("li")
-    var choiceButton = document.createElement("button")
-    choiceButton.classList.add("choiceButton")
+    for (var i = 0; i < questions[currentQuestion].answers.length; i++) {
+        var choiceList = document.querySelector(".choiceList");
+        var choiceItem = document.createElement("li")
+        var choiceButton = document.createElement("button")
+        choiceButton.classList.add("choiceButton")
 
-    choiceButton.textContent = questions[currentQuestion].answers[i];
-    
-    choiceButton.addEventListener('click', function(event) {
-        selectedAnswer(event)
-    });
-    
-    choiceList.appendChild(choiceItem);
-    choiceItem.appendChild(choiceButton);
-}};
+        choiceButton.textContent = questions[currentQuestion].answers[i];
+        
+        choiceButton.addEventListener('click', function(event) {
+            selectedAnswer(event)
+        });
+        
+        choiceList.appendChild(choiceItem);
+        choiceItem.appendChild(choiceButton);
+    }
+};
 
 function nextQuestion() {
     if (currentQuestion < questions.length -1) {
         currentQuestion++;
         loadQues();
     } else {
-        quizBox.endQuiz()
+        endQuiz();
     }
 };
 
 function endQuiz() {
+    clearInterval(timerStart);
+    userScore = timerCount
+    quizBox.setAttribute('style', 'display: none');
 
+    var endTitle = document.querySelector(".quizEndHead");
+    var scoreResult = document.querySelector(".scoreResult");
+    scoreResult.textContent = "Enter your intials below to save your score:"
+    endTitle.textContent = "Your final score is " + userScore
+
+    scoreBox.setAttribute('style', 'display: block');
 }
 // var userSel = choiceButton.value;
 
