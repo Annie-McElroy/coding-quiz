@@ -40,31 +40,19 @@ rules.textContent = "To complete this quiz please answer the following 5 questio
 function setTime() {
     timerCount--;
     timeText.textContent = "Time: " + timerCount;
-    // if (secondsLeft <= 0) {
-    //     endQuiz();
-    // }
+
+    if (timerCount <= 0) {
+        endQuiz()
+    }
 };
 
 
 // Start quiz event function
 startQuiz.addEventListener("click", function() {
-    // event.stopPropagation();
     timerStart = setInterval(setTime, 1000);
     infoBox.setAttribute('style', 'display: none');
     setTime();
     loadQues();
-        
-    // if(que_count < questions.length - 1){ //if question count is less than total question length
-    //     que_count++; //increment the que_count value
-    //     que_numb++; //increment the que_numb value
-    //     showQuetions(que_count); //calling showQestions function
-    //     queCounter(que_numb); //passing que_numb value to queCounter
-    //     clearInterval(counter); //clear counter
-    //     clearInterval(counterLine); //clear counterLine
-    //     startTimer(timeValue); //calling startTimer function
-    //     startTimerLine(widthValue); //calling startTimerLine function
-    //     timeText.textContent = "Time Left"; //change the timeText to Time Left
-    //     next_btn.classList.remove("show"); //hide the next button
 
 });
 
@@ -139,8 +127,8 @@ function endQuiz() {
 
     var endTitle = document.querySelector(".quizEndHead");
     var scoreResult = document.querySelector(".scoreResult");
-    scoreResult.textContent = "Enter your intials below to save your score:"
-    endTitle.textContent = "Your final score is " + timeLeft
+    scoreResult.textContent = "Enter your initials below to save your score:";
+    endTitle.textContent = "Your final score is " + timeLeft + "!";
 
     scoreBox.setAttribute('style', 'display: block');
 }
@@ -191,8 +179,6 @@ submitButton.addEventListener('click', function(event) {
         allScores.push(scoreInfo)
         localStorage.setItem("Highscores", JSON.stringify(allScores));
         window.location.href = "highscore.html";
-        // localStorage.setItem("Initials", userName)
-        // localStorage.setItem("score", userScore)
     };
 
 });
@@ -201,6 +187,3 @@ submitButton.addEventListener('click', function(event) {
 redoQuiz.addEventListener('click', function() {
     window.location.reload();
 })
-
-// Subtract time if question is wrong
-// Game over when all questions are reached or time = 0
