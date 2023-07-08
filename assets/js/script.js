@@ -2,27 +2,26 @@ var infoBox = document.querySelector(".first-box");
 var bigTitle = document.querySelector(".title");
 var rules = document.querySelector(".rules");
 var startQuiz = document.querySelector(".start");
-var checkAnswer = document.querySelector(".quesResult")
+var checkAnswer = document.querySelector(".quesResult");
 
-var quizBox = document.querySelector(".quiz-box")
-var scoreBox = document.querySelector(".quiz-end")
+var quizBox = document.querySelector(".quiz-box");
+var scoreBox = document.querySelector(".quiz-end");
 
 var timerCount = 75;
-var timeText = document.querySelector(".timer")
+var timeText = document.querySelector(".timer");
 var timerStart;
 var userScore;
 
+var userNameInput = document.querySelector(".input-box");
+var submitButton = document.querySelector(".submit-button");
+var msgPar = document.querySelector(".msg-box");
 
-var resultBox = document.querySelector(".quiz-end")
+var resultBox = document.querySelector(".quiz-end");
 
 var correctAnswer = 0;
-// var endQuiz = false;
 var selectedAnswer;
 
 scoreBox.setAttribute('style', 'display: none');
-
-// var question = document.querySelector(".question");
-// var choices = document.querySelector(".choiceList")
 
 
 
@@ -36,8 +35,8 @@ rules.textContent = "To complete this quiz please answer the following 5 questio
 function setTime() {
     timerCount--;
     timeText.textContent = "Time: " + timerCount;
-    // if (secondsLeft <=0) {
-    //     endScore();
+    // if (secondsLeft <= 0) {
+    //     endQuiz();
     // }
 };
 
@@ -152,20 +151,29 @@ function selectedAnswer(event) {
     timerCount -= 10;
     nextQuestion();
     }
-    // var userSel = answers.textContent;
-    // var correctAnswer = questions[currentQuestion].correctA
-    // if (userSel == correctAnswer) {
-    //     userScore += 1;
-    //     // display correct below question area
-    //     nextQuestion();
-    // } else {
-    //     // display wrong below question area
-    //     // dock 5-10 seconds from the timer
-    //     nextQuestion();
-    // }
 };
 
+function displayMessage(type, message) {
+    msgPar.textContent = message;
+}
 
+submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    var userName = document.querySelector(".input-box").value
+    if (userName === "") {
+        displayMessage("error", "Initials cannot be blank")
+    } else {
+        displayMessage("sucess", "Highscore saved to 'View Highscore'")
+        
+        localStorage.setItem("Initials", userName)
+        localStorage.setItem("score", userScore)
+    }
+
+});
+
+// function addScore {
+//     var
+// }
 
 // Clear Interval clears the timer and ends the quiz
 // Subtract time if question is wrong
