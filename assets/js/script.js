@@ -26,6 +26,9 @@ var correctAnswer = 0;
 var selectedAnswer;
 var checkAnswer = document.querySelector(".quesResult");
 
+// Localstorage variables
+var allScores = [];
+
 scoreBox.setAttribute('style', 'display: none');
 
 
@@ -159,6 +162,16 @@ function displayMessage(type, message) {
     msgPar.textContent = message;
 }
 
+function init() {
+    var storedScores = JSON.parse(localStorage.getItem("High Scores"));
+    
+    if (storedScores != null) {
+        allScores = storedScores;
+    }
+};
+
+
+
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
     // var userName = document.querySelector(".input-box").value
@@ -166,20 +179,24 @@ submitButton.addEventListener('click', function(event) {
     var scoreInfo = {
         userName: document.querySelector(".input-box").value.trim(),
         userScore: timeLeft
-    }
+    };
+    init();
 
     if (scoreInfo.userName === "") {
         displayMessage("error", "Initials cannot be blank")
     } else {
         displayMessage("sucess", "Highscore saved to 'View Highscore'")
 
-        localStorage.setItem("scoreInfo", JSON.stringify(scoreInfo));
-
+        allScores.push(scoreInfo)
+        localStorage.setItem("High Scores", JSON.stringify(allScores));
+        window.location.href = "highscore.html";
         // localStorage.setItem("Initials", userName)
         // localStorage.setItem("score", userScore)
-    }
+    };
 
 });
+
+
 
 // function resetQuiz() {
 //     timerCount = 75;
