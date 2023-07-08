@@ -1,37 +1,39 @@
 var infoBox = document.querySelector(".first-box");
+// Beginning box
 var bigTitle = document.querySelector(".title");
 var rules = document.querySelector(".rules");
 var startQuiz = document.querySelector(".start");
-var checkAnswer = document.querySelector(".quesResult");
 
+// boxes
 var quizBox = document.querySelector(".quiz-box");
 var scoreBox = document.querySelector(".quiz-end");
 
-var timerCount = 75;
+// timer and score
+var timerCount = 76;
 var timeText = document.querySelector(".timer");
 var timerStart;
-var userScore;
+var timeLeft;
 
+// end quiz buttons
 var userNameInput = document.querySelector(".input-box");
 var submitButton = document.querySelector(".submit-button");
 var msgPar = document.querySelector(".msg-box");
+var redoQuiz = document.querySelector("#go-back");
+var resetScore = document.querySelector("#reset");
 
-var resultBox = document.querySelector(".quiz-end");
-
+// answer variables
 var correctAnswer = 0;
 var selectedAnswer;
+var checkAnswer = document.querySelector(".quesResult");
 
 scoreBox.setAttribute('style', 'display: none');
 
 
 
 bigTitle.textContent = "Coding Quiz Challenge";
-rules.textContent = "To complete this quiz please answer the following 5 questions within the limited timeframe of 1 minute (60 seconds). If any questions are incorrect, you are docked 10 seconds from the timer. After answering all questions the quiz will end and you may store your score with your initials. If you reach 0 on the timer the quiz will end. Good luck!"
+rules.textContent = "To complete this quiz please answer the following 5 questions within 75 seconds. If any questions are incorrect, you are penalized by losing 10 seconds from the timer. After answering all questions the remaining time is your score! You may save your score with your initials into the highscore page. If you reach 0 on the timer the quiz will end and your score will be 0. Good luck!"
 
 // Timer for the whole quiz
-// SetInterval and Clear Interval for the timer
-// Eventlistener for question/answer transition
-
 function setTime() {
     timerCount--;
     timeText.textContent = "Time: " + timerCount;
@@ -41,8 +43,7 @@ function setTime() {
 };
 
 
-// Start quiz function
-
+// Start quiz event function
 startQuiz.addEventListener("click", function() {
     // event.stopPropagation();
     timerStart = setInterval(setTime, 1000);
@@ -127,15 +128,16 @@ function nextQuestion() {
     }
 };
 
+// Clear Interval clears the timer and ends the quiz, displays score and end quiz box content
 function endQuiz() {
     clearInterval(timerStart);
-    userScore = timerCount
+    timeLeft = timerCount
     quizBox.setAttribute('style', 'display: none');
 
     var endTitle = document.querySelector(".quizEndHead");
     var scoreResult = document.querySelector(".scoreResult");
     scoreResult.textContent = "Enter your intials below to save your score:"
-    endTitle.textContent = "Your final score is " + userScore
+    endTitle.textContent = "Your final score is " + timeLeft
 
     scoreBox.setAttribute('style', 'display: block');
 }
@@ -150,7 +152,7 @@ function selectedAnswer(event) {
     checkAnswer.innerHTML = "Wrong";
     timerCount -= 10;
     nextQuestion();
-    }
+}
 };
 
 function displayMessage(type, message) {
@@ -159,41 +161,41 @@ function displayMessage(type, message) {
 
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
-    var userName = document.querySelector(".input-box").value
-    if (userName === "") {
+    // var userName = document.querySelector(".input-box").value
+
+    var scoreInfo = {
+        userName: document.querySelector(".input-box").value.trim(),
+        userScore: timeLeft
+    }
+
+    if (scoreInfo.userName === "") {
         displayMessage("error", "Initials cannot be blank")
     } else {
         displayMessage("sucess", "Highscore saved to 'View Highscore'")
-        
-        localStorage.setItem("Initials", userName)
-        localStorage.setItem("score", userScore)
+
+        localStorage.setItem("scoreInfo", JSON.stringify(scoreInfo));
+
+        // localStorage.setItem("Initials", userName)
+        // localStorage.setItem("score", userScore)
     }
 
 });
+
+// function resetQuiz() {
+//     timerCount = 75;
+
+// }
+
+redoQuiz.addEventListener('click', function() {
+    window.location.reload();
+    // timerCount = 76;
+    // scoreBox.setAttribute('style', 'display: none');
+    // infoBox.setAttribute('style', 'display: block');
+})
 
 // function addScore {
 //     var
 // }
 
-// Clear Interval clears the timer and ends the quiz
 // Subtract time if question is wrong
 // Game over when all questions are reached or time = 0
-
-// Restart quiz
-    // restart_quiz.onclick = ()=>{
-    //     quiz_box.classList.add("activeQuiz"); //show quiz box
-    //     result_box.classList.remove("activeResult"); //hide result box
-    //     timeValue = 15; 
-    //     que_count = 0;
-    //     que_numb = 1;
-    //     userScore = 0;
-    //     widthValue = 0;
-    //     showQuetions(que_count); //calling showQestions function
-    //     queCounter(que_numb); //passing que_numb value to queCounter
-    //     clearInterval(counter); //clear counter
-    //     clearInterval(counterLine); //clear counterLine
-    //     startTimer(timeValue); //calling startTimer function
-    //     startTimerLine(widthValue); //calling startTimerLine function
-    //     timeText.textContent = "Time Left"; //change the text of timeText to Time Left
-    //     next_btn.classList.remove("show"); //hide the next button
-    // }
