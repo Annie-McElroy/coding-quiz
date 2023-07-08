@@ -84,7 +84,21 @@ main {
     border-radius: 25%;
 }
 
-.quiz-end {
+/* .quiz-end {
     display: flex;
     justify-content: center;
+} */
+
+.end-button {
+    background-color:#810deed3;
+    border: none;
+    color: #ccf1daa2;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 25%;
 }
