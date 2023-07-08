@@ -16,7 +16,7 @@ var resultBox = document.querySelector(".quiz-end")
 // var userScore = 0;
 var questionNum = 0;
 var correctAnswer = 0;
-var endQuiz = false;
+// var endQuiz = false;
 var selectedAnswer;
 
 // var question = document.querySelector(".question");
@@ -83,9 +83,15 @@ var questions =[
     },
     {
         q: "What does 'document.createElement('h2')' do in the HTML?",
-        answers: ["", "shift()", "concat()", "join()"],
-        correctA: "concat()"
+        answers: ["Selects the h2 element", "Adds an h2 element", "Adds an h3 element", "Appends child to h2 element"],
+        correctA: "Adds an h2 element"
+    },
+    {
+        q: "How to stop an interval timer in Javascript??",
+        answers: ["endTime", "intervalOver", "clearTimer", "clearInterval"],
+        correctA: "clearInterval"
     }
+
 ];
 
 var currentQuestion = 0;
@@ -117,10 +123,13 @@ function nextQuestion() {
         currentQuestion++;
         loadQues();
     } else {
-        quizBox.remove()
+        quizBox.endQuiz()
     }
 };
 
+function endQuiz() {
+
+}
 // var userSel = choiceButton.value;
 
 // userSel.addEventListener('click', function(){
