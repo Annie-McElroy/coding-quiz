@@ -155,7 +155,6 @@ function init() {
     
     if (storedScores != null) {
         allScores = storedScores;
-        console.log(allScores)
     }
 };
 

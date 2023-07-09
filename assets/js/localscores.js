@@ -1,6 +1,4 @@
 var scoreList = document.querySelector(".score-list");
-var headTitle = document.querySelector(".head");
-// var replayButton = document.querySelector("#replay");
 var clearButton = document.querySelector("#clear");
 
 var scores = [];
